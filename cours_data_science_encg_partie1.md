@@ -1,12 +1,11 @@
 # COURS DE SCIENCE DES DONNÉES
 ## École Nationale de Commerce et de Gestion (ENCG) - 4ème Année
+<img src="logo encg settat.jpg" style="height:464px;margin-right:432px"/>
 
----
 
 # AL BARJ ASMA 
 <img src="ASSSSSSMAAAAAAA.jpg" style="height:200px;margin-right:150px"/>
 
-ASSSSSSMAAAAAAA.jpg
 # PARTIE 1 : FONDAMENTAUX DE LA SCIENCE DES DONNÉES
 
 ---
