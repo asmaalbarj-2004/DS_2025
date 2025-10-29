@@ -1,4 +1,5 @@
-
+#AL BARJ ASMA 
+<img src="logo encg settat.jpg" style="height:100px;margin-right:95px"/>
 # 🌍 Analyse du PIB nominal mondial — Année 2024
 
 ## 🧭 Objectif
