@@ -2,7 +2,11 @@
 ## École Nationale de Commerce et de Gestion (ENCG) - 4ème Année
 
 ---
+
 # AL BARJ ASMA 
+<img src="ASSSSSSMAAAAAAA.jpg" style="height:464px;margin-right:432px"/>
+
+ASSSSSSMAAAAAAA.jpg
 # PARTIE 1 : FONDAMENTAUX DE LA SCIENCE DES DONNÉES
 
 ---
