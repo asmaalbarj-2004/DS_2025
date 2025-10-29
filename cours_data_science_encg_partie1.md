@@ -184,6 +184,8 @@ print(df.info())
 # Statistiques descriptives
 print(df.describe())
 
+
+
 # Statistiques pour une colonne spécifique
 colonne = df['Value']  # Adapter selon vos données
 
