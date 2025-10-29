@@ -1,5 +1,5 @@
 #AL BARJ ASMA 
-<img src="ASSSSSSMAAAAAAA.jpg" style="height:200px;margin-right:150px"/>
+<img src="ASSSSSSMAAAAAAA.jpg" style="height:200px;margin-right:100px"/>
 # 🌍 Analyse du PIB nominal mondial — Année 2024
 
 ## 🧭 Objectif
