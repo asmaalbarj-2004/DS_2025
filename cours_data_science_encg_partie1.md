@@ -1,6 +1,6 @@
 # COURS DE SCIENCE DES DONNÉES
 ## École Nationale de Commerce et de Gestion (ENCG) - 4ème Année
-<img src="logo encg settat.jpg" style="height:464px;margin-right:432px"/>
+<img src="logo encg settat.jpg" style="height:100px;margin-right:95px"/>
 
 
 # AL BARJ ASMA 
