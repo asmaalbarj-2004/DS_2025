@@ -167,6 +167,7 @@ for col in categorical_features:
 ```
 
 
+
 ---
 # GRAPHIQUES
 <img src="graphe2.png" style="height:350px;margin-right:200px"/>
