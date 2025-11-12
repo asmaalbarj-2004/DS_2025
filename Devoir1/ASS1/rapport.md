@@ -94,8 +94,8 @@ Cette licence autorise le **partage et l’adaptation** du jeu de données à to
 | **Domaine d’application** | Marketing bancaire, Machine Learning |
 
 ---
-<img src="graphe1.png" style="height:200px;margin-right:150px"/>
-<img src="graohe2.png" style="height:200px;margin-right:150px"/>
+<img src="graphe2.png" style="height:200px;margin-right:150px"/>
+<img src="graphe 1.png" style="height:200px;margin-right:150px"/>
 ## 📚 Conclusion
 
 Le jeu de données **Bank Marketing** constitue une ressource précieuse pour l’apprentissage et la recherche en **science des données appliquée au marketing**.  
