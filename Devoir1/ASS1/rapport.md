@@ -92,6 +92,78 @@ Cette licence autorise le **partage et l’adaptation** du jeu de données à to
 | **Méthode de collecte** | Appels téléphoniques |
 | **Licence** | Creative Commons BY 4.0 |
 | **Domaine d’application** | Marketing bancaire, Machine Learning |
+## 🧾 CODE PYTHON 
+from ucimlrepo import fetch_ucirepo 
+  
+# fetch dataset 
+bank_marketing = fetch_ucirepo(id=222) 
+  
+# data (as pandas dataframes) 
+X = bank_marketing.data.features 
+y = bank_marketing.data.targets 
+  
+# metadata 
+print(bank_marketing.metadata) 
+  
+# variable information 
+print(bank_marketing.variables) 
+print("### First 5 rows of X DataFrame:\n")
+print(X.head())
+print("\n### First 5 rows of y DataFrame:\n")
+print(y.head())
+
+print("\n### Info for X DataFrame:\n")
+X.info()
+print("\n### Info for y DataFrame:\n")
+y.info()
+
+print("\n### Descriptive statistics for X DataFrame (numerical columns):\n")
+print(X.describe())
+
+print("\n### Missing values in X DataFrame:\n")
+print(X.isnull().sum())
+
+print("\n### Unique values for categorical columns in X DataFrame:\n")
+for col in X.select_dtypes(include='object').columns:
+    print(f"\nUnique values for column '{col}':\n{X[col].unique()}")
+
+print("\n### Missing values in y DataFrame:\n")
+print(y.isnull().sum())
+
+print("\n### Unique values and their counts for y DataFrame:\n")
+print(y['y'].value_counts())
+for col in ['job', 'education', 'contact', 'poutcome']:
+    X[col] = X[col].fillna('unknown')
+
+# Combine X and y into a single DataFrame
+df = pd.concat([X, y], axis=1)
+
+print("### Missing values in X DataFrame after handling NaNs:")
+print(X[['job', 'education', 'contact', 'poutcome']].isnull().sum())
+print("\n### First 5 rows of combined DataFrame (df):")
+print(df.head())
+print("\n### Info for combined DataFrame (df):")
+df.info()
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Identify categorical columns
+categorical_cols = df.select_dtypes(include='object').columns
+
+# Exclude the target variable 'y' from the categorical columns to plot as a feature
+categorical_features = [col for col in categorical_cols if col != 'y']
+
+# Plot bar charts for each categorical feature
+for col in categorical_features:
+    plt.figure(figsize=(10, 6))
+    sns.countplot(data=df, x=col, hue='y', palette='viridis')
+    plt.title(f'Distribution of {col} by Subscription Outcome')
+    plt.xlabel(col)
+    plt.ylabel('Count')
+    plt.xticks(rotation=45, ha='right') # Rotate labels for better readability
+    plt.tight_layout()
+    plt.show()
+
 
 ---
 <img src="graphe2.png" style="height:200px;margin-right:150px"/>
