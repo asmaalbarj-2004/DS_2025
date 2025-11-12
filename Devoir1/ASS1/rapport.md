@@ -166,8 +166,9 @@ for col in categorical_features:
 
 
 ---
-<img src="graphe2.png" style="height:200px;margin-right:150px"/>
-<img src="graphe 1.png" style="height:200px;margin-right:150px"/>
+#GRAPHIQUE 
+<img src="graphe2.png" style="height:350px;margin-right:200px"/>
+<img src="graphe 1.png" style="height:350px;margin-right:200px"/>
 ## 📚 Conclusion
 
 Le jeu de données **Bank Marketing** constitue une ressource précieuse pour l’apprentissage et la recherche en **science des données appliquée au marketing**.  
