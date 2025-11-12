@@ -187,7 +187,7 @@ plt.show()
 # GRAPHIQUES
 <img src="graphe2.png" style="height:350px;margin-right:200px"/>
 <img src="graphe 1.png" style="height:350px;margin-right:200px"/>
-# MATRICE DE CORRELATION 
+#  MATRICE DE CORRELATION 
 <img src="matrice.png" style="height:350px;margin-right:200px"/>
 ## 📚 Conclusion
 
