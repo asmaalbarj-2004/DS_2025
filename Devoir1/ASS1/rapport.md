@@ -164,6 +164,21 @@ for col in categorical_features:
     plt.xticks(rotation=45, ha='right') # Rotate labels for better readability
     plt.tight_layout()
     plt.show()
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Convert categorical features to numerical using one-hot encoding
+df_encoded = pd.get_dummies(df, drop_first=True)
+
+# Calculate the correlation matrix
+correlation_matrix = df_encoded.corr()
+
+# Plotting the heatmap
+plt.figure(figsize=(18, 15))
+sns.heatmap(correlation_matrix, annot=False, cmap='coolwarm', fmt=".2f", linewidths=.5)
+plt.title('Correlation Matrix of All Features', fontsize=20)
+plt.show()
 ```
 
 
@@ -172,6 +187,8 @@ for col in categorical_features:
 # GRAPHIQUES
 <img src="graphe2.png" style="height:350px;margin-right:200px"/>
 <img src="graphe 1.png" style="height:350px;margin-right:200px"/>
+# MATRICE DE CORRELATION 
+<img src="matrice.png" style="height:350px;margin-right:200px"/>
 ## 📚 Conclusion
 
 Le jeu de données **Bank Marketing** constitue une ressource précieuse pour l’apprentissage et la recherche en **science des données appliquée au marketing**.  
