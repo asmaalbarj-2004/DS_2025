@@ -93,6 +93,7 @@ Cette licence autorise le **partage et l’adaptation** du jeu de données à to
 | **Licence** | Creative Commons BY 4.0 |
 | **Domaine d’application** | Marketing bancaire, Machine Learning |
 ## 🧾 CODE PYTHON 
+```python
 from ucimlrepo import fetch_ucirepo 
   
 # fetch dataset 
@@ -163,6 +164,7 @@ for col in categorical_features:
     plt.xticks(rotation=45, ha='right') # Rotate labels for better readability
     plt.tight_layout()
     plt.show()
+```
 
 
 ---
