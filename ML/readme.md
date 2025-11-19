@@ -1,6 +1,8 @@
 ## AL BARJ ASMA 
 <img src="ASSSSSSMAAAAAAA (1).jpg" style="height:300px;margin-right:250px"/>
+
 # Wine Quality Study 
+
 ### Predicting Wine Quality from Physicochemical Properties  
 ### Based on UCI Machine Learning Repository (Red & White Vinho Verde)
 
