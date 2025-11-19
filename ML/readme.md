@@ -143,6 +143,121 @@ A baseline **k-nearest neighbors** classifier is used:
 - Distance: Euclidean
 - Trained on **training set**
 - Evaluated on **validation set**
+## CODE PYTHON 
+# ============================================
+# 0. IMPORTS
+# ============================================
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
+# ============================================
+
+
+# ============================================
+# 1. LOAD DATASET
+# ============================================
+link = "http://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv"
+
+df = pd.read_csv(link, header="infer", delimiter=";")
+
+print("\n========= Dataset summary ========= \n")
+df.info()
+
+print("\n========= A few first samples ========= \n")
+print(df.head())
+
+
+# ============================================
+# 2. FORM X AND Y
+# ============================================
+X = df.drop("quality", axis=1)
+Y = df["quality"]
+
+print("\n========= Wine Qualities ========= \n")
+print(Y.value_counts())
+
+
+# ============================================
+# 3. BINARY CLASSIFICATION (0 = bad, 1 = good)
+# ============================================
+Y = np.array([0 if q <= 5 else 1 for q in Y])
+
+print("\n========= Number of samples per class ========= \n")
+unique, counts = np.unique(Y, return_counts=True)
+print(dict(zip(unique, counts)))
+
+
+# ============================================
+# 4. STATISTICAL ANALYSIS
+# ============================================
+
+# --- Boxplots of features ---
+plt.figure(figsize=(12,6))
+ax = plt.gca()
+sns.boxplot(data=X, orient="v", palette="Set1", width=1.5, notch=True)
+ax.set_xticklabels(ax.get_xticklabels(), rotation=90)
+plt.title("Boxplots of Features")
+plt.show()
+
+# --- Correlation matrix ---
+plt.figure(figsize=(10,8))
+corr = X.corr()
+sns.heatmap(corr, annot=False, cmap="coolwarm")
+plt.title("Correlation Matrix")
+plt.show()
+
+
+# ============================================
+# 5. TRAIN/VAL/TEST SPLIT (STRATIFIED)
+# ============================================
+
+# First: train + test (1/3)
+Xa, Xt, Ya, Yt = train_test_split(
+    X, Y,
+    shuffle=True,
+    test_size=1/3,
+    stratify=Y
+)
+
+# Second: split train into train (50%) and validation (50%)
+Xa, Xv, Ya, Yv = train_test_split(
+    Xa, Ya,
+    shuffle=True,
+    test_size=0.5,
+    stratify=Ya
+)
+
+print("\n========= Dataset sizes =========\n")
+print(f"Training set: {Xa.shape[0]} samples")
+print(f"Validation set: {Xv.shape[0]} samples")
+print(f"Test set: {Xt.shape[0]} samples")
+
+
+# ============================================
+# 6. k-NN CLASSIFICATION (k = 3)
+# ============================================
+
+k = 3
+clf = KNeighborsClassifier(n_neighbors=k)
+
+# Train on (Xa, Ya)
+clf.fit(Xa, Ya)
+
+# Predict on validation set
+Yv_pred = clf.predict(Xv)
+
+# Error rate
+error_rate = np.mean(Yv_pred != Yv)
+accuracy = accuracy_score(Yv, Yv_pred)
+
+print("\n========= k-NN Results (k = 3) =========\n")
+print(f"Validation Error Rate: {error_rate:.4f}")
+print(f"Validation Accuracy:   {accuracy:.4f}")
 
 ### Results
 
