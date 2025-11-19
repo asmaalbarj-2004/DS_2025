@@ -1,4 +1,5 @@
 ## AL BARJ ASMA 
+<img src="ASSSSSSMAAAAAAA (1).jpg" style="height:300px;margin-right:250px"/>
 # Wine Quality Study 
 ### Predicting Wine Quality from Physicochemical Properties  
 ### Based on UCI Machine Learning Repository (Red & White Vinho Verde)
@@ -274,10 +275,10 @@ for column in X.columns:
 |--------|--------|
 | **Validation Accuracy** | ~0.74 (approx.) |
 | **Error Rate** | ~0.26 |
-<img src="téléchargement (1).png" style="height:260px;margin-right:200px"/>
-<img src="téléchargement (2).png" style="height:260px;margin-right:200px"/>
-<img src="1234.png" style="height:260px;margin-right:200px"/>
-<img src="4567.png" style="height:260px;margin-right:200px"/>
+<img src="téléchargement (1).png" style="height:300px;margin-right:250px"/>
+<img src="téléchargement (2).png" style="height:300px;margin-right:250px"/>
+<img src="1234.png" style="height:300px;margin-right:250px"/>
+<img src="4567.png" style="height:300px;margin-right:250px"/>
 *Interpretation:*  
 k-NN performs reasonably well, but further improvements are possible.
 
