@@ -1,4 +1,4 @@
-# Wine Quality Study — Extended Report
+# Wine Quality Study 
 ### Predicting Wine Quality from Physicochemical Properties  
 ### Based on UCI Machine Learning Repository (Red & White Vinho Verde)
 
