@@ -1,3 +1,4 @@
+
 # Wine Quality Study 
 ### Predicting Wine Quality from Physicochemical Properties  
 ### Based on UCI Machine Learning Repository (Red & White Vinho Verde)
@@ -149,6 +150,8 @@ A baseline **k-nearest neighbors** classifier is used:
 |--------|--------|
 | **Validation Accuracy** | ~0.74 (approx.) |
 | **Error Rate** | ~0.26 |
+<img src="téléchargement (1).png" style="height:260px;margin-right:200px"/>
+<img src="téléchargement (2).png" style="height:260px;margin-right:200px"/>
 
 *Interpretation:*  
 k-NN performs reasonably well, but further improvements are possible.
