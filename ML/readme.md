@@ -152,7 +152,8 @@ A baseline **k-nearest neighbors** classifier is used:
 | **Error Rate** | ~0.26 |
 <img src="téléchargement (1).png" style="height:260px;margin-right:200px"/>
 <img src="téléchargement (2).png" style="height:260px;margin-right:200px"/>
-
+<img src="1234.png" style="height:260px;margin-right:200px"/>
+<img src="4567.png" style="height:260px;margin-right:200px"/>
 *Interpretation:*  
 k-NN performs reasonably well, but further improvements are possible.
 
