@@ -144,6 +144,7 @@ A baseline **k-nearest neighbors** classifier is used:
 - Trained on **training set**
 - Evaluated on **validation set**
 ## CODE PYTHON 
+```python 
 # ============================================
 # 0. IMPORTS
 # ============================================
@@ -258,7 +259,15 @@ accuracy = accuracy_score(Yv, Yv_pred)
 print("\n========= k-NN Results (k = 3) =========\n")
 print(f"Validation Error Rate: {error_rate:.4f}")
 print(f"Validation Accuracy:   {accuracy:.4f}")
-
+print("\n========= Histograms of Features =========\n")
+for column in X.columns:
+    plt.figure(figsize=(8, 5))
+    sns.histplot(X[column], kde=True)
+    plt.title(f"Distribution of {column}")
+    plt.xlabel(column)
+    plt.ylabel("Frequency")
+    plt.show()
+```
 ### Results
 
 | Metric | Value |
