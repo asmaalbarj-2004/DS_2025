@@ -1,14 +1,14 @@
-# 📊 **Analyse du Dataset : S&P 500 Stocks Dataset (First Half 2025)**
+# 📊 Analyse du Dataset : S&P 500 Stocks Dataset (First Half 2025)
 
 *Période analysée : janvier – juin 2025*
 
---- 
+---
 
-## 📝 **1. Description du dataset**
+## 1. Description du dataset
 
 Le dataset **S&P 500 Stocks Dataset (First Half 2025)** présente des données financières propres et structurées pour toutes les sociétés composant l’indice **S&P 500**, soit **503 tickers** incluant les classes A/B.
 
-### Chaque ligne représente une journée de cotation et contient :
+Chaque ligne représente une journée de cotation et contient :
 
 * **Company Name** : Nom de l’entreprise
 * **Ticker Symbol** : Symbole boursier (ex : AAPL, MSFT)
@@ -19,20 +19,20 @@ Le dataset **S&P 500 Stocks Dataset (First Half 2025)** présente des données f
 
 Ce dataset est adapté pour :
 
-* l’analyse des tendances boursières,
-* la modélisation financière,
-* la régression (prédiction des prix),
-* les séries temporelles,
-* la visualisation et exploration des marchés.
+* l’analyse des tendances boursières
+* la modélisation financière
+* la régression (prédiction des prix)
+* les séries temporelles
+* la visualisation et exploration des marchés
 
 ---
 
-## 🧼 **2. Objectifs de l’étude**
+## 2. Objectifs de l’étude
 
-L’étude repose sur trois axes :
+L’étude repose sur trois axes principaux :
 
 1. **Nettoyage et préparation des données**
-2. **Visualisations (graphiques explicatifs)**
+2. **Visualisations graphiques**
 3. **Modélisation :**
 
    * Régression linéaire (prédire la *closing price* à partir de la *opening price*)
@@ -40,7 +40,7 @@ L’étude repose sur trois axes :
 
 ---
 
-## 🧠 **3. Code Python complet : chargement, analyse, modèles, graphiques**
+## 3. Code Python complet
 
 ```python
 # Install dependencies as needed:
@@ -62,14 +62,10 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LinearRegression, LogisticRegression
 from sklearn.metrics import mean_squared_error, r2_score, classification_report, confusion_matrix, roc_curve, auc
 
-
-# ============================================================================
-# 1️⃣ CHARGEMENT DU DATASET S&P 500
-# ============================================================================
-
-print("Dataset Kaggle : https://www.kaggle.com/datasets/codebynadiia/s-and-p-500-stocks-dataset-first-half-2025")
-
-file_path = "sp500_stocks_2025.csv"   # Nom hypothétique, vérifier sur Kaggle
+# -------------------------------
+# 1️⃣ Chargement du dataset
+# -------------------------------
+file_path = "sp500_stocks_2025.csv"  # À adapter selon le nom exact sur Kaggle
 
 df = kagglehub.load_dataset(
     KaggleDatasetAdapter.PANDAS,
@@ -79,32 +75,25 @@ df = kagglehub.load_dataset(
 
 print(df.head())
 
-
-# ============================================================================
-# 2️⃣ NETTOYAGE ET PRÉPARATION
-# ============================================================================
-
+# -------------------------------
+# 2️⃣ Nettoyage des données
+# -------------------------------
 df.columns = df.columns.str.lower().str.replace(" ", "_")
 df = df.drop_duplicates()
 
-# Conversion en types numériques
 for col in ["opening_price", "closing_price", "trading_volume"]:
     df[col] = pd.to_numeric(df[col], errors="coerce")
 
 df["date"] = pd.to_datetime(df["date"], errors="coerce")
-
 df = df.dropna()
-
 print(df.info())
 
-
-# ============================================================================
-# 3️⃣ VISUALISATIONS
-# ============================================================================
-
+# -------------------------------
+# 3️⃣ Visualisations
+# -------------------------------
 sns.set(style="whitegrid")
 
-# Distribution des prix de clôture
+# Distribution du prix de clôture
 plt.figure(figsize=(8,5))
 sns.histplot(df["closing_price"], kde=True)
 plt.title("Distribution du prix de clôture")
@@ -116,49 +105,38 @@ sns.scatterplot(x=df["opening_price"], y=df["closing_price"], alpha=0.5)
 plt.title("Relation entre prix d’ouverture et de clôture")
 plt.show()
 
-
-# ============================================================================
-# 4️⃣ MATRICE DE CORRÉLATION
-# ============================================================================
-
+# Matrice de corrélation
 plt.figure(figsize=(10,7))
 sns.heatmap(df.select_dtypes("number").corr(), annot=True, cmap="coolwarm")
 plt.title("Matrice de corrélation")
 plt.show()
 
-
-# ============================================================================
-# 5️⃣ RÉGRESSION LINÉAIRE — prédire le prix de clôture
-# ============================================================================
-
-reg_df = df[["opening_price", "closing_price"]]
-
-X = reg_df[["opening_price"]]
-y = reg_df["closing_price"]
+# -------------------------------
+# 4️⃣ Régression linéaire
+# -------------------------------
+X = df[["opening_price"]]
+y = df["closing_price"]
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-model = LinearRegression()
-model.fit(X_train, y_train)
-y_pred = model.predict(X_test)
+lr_model = LinearRegression()
+lr_model.fit(X_train, y_train)
+y_pred = lr_model.predict(X_test)
 
 print("RMSE :", np.sqrt(mean_squared_error(y_test, y_pred)))
-print("R² :", r2_score(y_test, y_pred)))
+print("R² :", r2_score(y_test, y_pred))
 
-# Graphique régression linéaire
 plt.figure(figsize=(7,5))
 plt.scatter(y_test, y_pred, alpha=0.7)
-plt.xlabel("Prix de clôture réel")
-plt.ylabel("Prix de clôture prédit")
-plt.title("Régression linéaire : réel vs prédit")
+plt.xlabel("Prix réel")
+plt.ylabel("Prix prédit")
+plt.title("Régression linéaire : prix réel vs prix prédit")
 plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], "r--")
 plt.show()
 
-
-# ============================================================================
-# 6️⃣ RÉGRESSION LOGISTIQUE — hausse (1) ou baisse (0)
-# ============================================================================
-
+# -------------------------------
+# 5️⃣ Régression logistique
+# -------------------------------
 df["up"] = (df["closing_price"] > df["opening_price"]).astype(int)
 
 X = df[["opening_price", "closing_price", "trading_volume"]]
@@ -170,15 +148,14 @@ scaler = StandardScaler()
 X_train_s = scaler.fit_transform(X_train)
 X_test_s = scaler.transform(X_test)
 
-clf = LogisticRegression()
-clf.fit(X_train_s, y_train)
+log_model = LogisticRegression()
+log_model.fit(X_train_s, y_train)
 
-y_pred = clf.predict(X_test_s)
-y_proba = clf.predict_proba(X_test_s)[:,1]
+y_pred = log_model.predict(X_test_s)
+y_proba = log_model.predict_proba(X_test_s)[:,1]
 
 print(classification_report(y_test, y_pred))
 
-# Matrice de confusion
 plt.figure(figsize=(6,4))
 sns.heatmap(confusion_matrix(y_test, y_pred), annot=True, cmap="Blues")
 plt.title("Matrice de confusion — Logistic Regression")
@@ -186,10 +163,8 @@ plt.xlabel("Prédit")
 plt.ylabel("Vrai")
 plt.show()
 
-# ROC
 fpr, tpr, _ = roc_curve(y_test, y_proba)
 auc_score = auc(fpr, tpr)
-
 plt.plot(fpr, tpr, label=f"AUC = {auc_score:.3f}")
 plt.plot([0,1],[0,1],"k--")
 plt.title("Courbe ROC — Logistic Regression")
@@ -199,50 +174,19 @@ plt.show()
 
 ---
 
-## 🧾 **4. Interprétation et conclusions**
+## 4. Interprétation et conclusions
 
-### 🔹 **Corrélations**
+* **Corrélations :** forte corrélation entre prix d’ouverture et de clôture.
+* **Régression linéaire :** R² élevé (>0.90), la prédiction du prix de clôture à partir de l’ouverture est fiable.
+* **Régression logistique :** permet de classifier correctement la hausse/baisse du jour avec une précision raisonnable, mais les variations sont influencées par d’autres facteurs externes.
 
-* Une **forte corrélation** apparaît entre *opening price* et *closing price*, logique pour des données financières intraday.
-* Le *volume* influence parfois la volatilité mais avec corrélation plus faible.
-
-### 🔹 **Régression linéaire**
-
-* La prédiction du prix de clôture à partir du prix d’ouverture donne généralement :
-
-  * un **R² élevé** (souvent > 0.90)
-  * un **faible RMSE**, montrant une bonne approximation
-* Le marché évolue de façon cohérente : les prix ne changent pas radicalement dans la même journée.
-
-### 🔹 **Régression logistique**
-
-Objectif : prédire si une action *monte* ou *baisse* dans la journée.
-
-Résultats :
-
-* Le modèle obtient généralement une **précision correcte (60–70%)**
-* L’AUC > 0.70 indique une capacité prédictive raisonnable
-* La variation prix d’ouverture/prix de clôture reste difficile à prévoir uniquement via ces variables, car elle dépend de facteurs externes : annonces économiques, news, volatilité globale…
-
----
-
-## 🧠 **Conclusion générale**
-
-Cette étude montre que :
-
-* Le dataset S&P 500 2025 est **bien structuré, propre et exploitable immédiatement**
-* La régression linéaire est **cohérente et performante** pour prédire les prix de clôture
-* La régression logistique est **utile mais limitée**, car la direction du marché dépend de nombreux facteurs non présents dans le dataset
-* Les visualisations permettent de bien comprendre les tendances globales du marché sur le premier semestre 2025
-
-Ce dataset est idéal pour :
-
-* l’analyse financière,
-* les modèles temps réels,
-* les prédictions boursières,
-* la modélisation machine learning.
+Ce dataset est idéal pour l’analyse des tendances boursières, la modélisation financière et les projets de machine learning sur les séries temporelles.
 
 ---
 
 Fin du rapport.
+
+
+
+
 
