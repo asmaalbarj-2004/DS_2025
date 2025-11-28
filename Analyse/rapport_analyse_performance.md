@@ -1,3 +1,6 @@
+#  AL BARJ ASMA                                               CAC1 
+<img src="ASSSSSSMAAAAAAA.jpg" style="height:200px;margin-right:150px"/>
+
 # Compte Rendu : Analyse de la Performance des Étudiants aux Examens
 
 ## 📋 Informations Générales
@@ -120,6 +123,7 @@ Les analyses révèlent les tendances suivantes :
 - **Score moyen en écriture** : ~68-69 points
 
 **Observation clé** : Les scores en lecture et écriture sont légèrement supérieurs aux scores en mathématiques, suggérant une difficulté relative plus importante dans cette matière.
+<img src="math score.png" style="height:300px;margin-right:200px"/>
 
 #### Distribution par Forme
 
@@ -137,6 +141,7 @@ Les histogrammes montrent que :
 1. **Mathématiques** : Léger avantage pour les garçons
 2. **Lecture et Écriture** : Avantage significatif pour les filles
 3. Les filles obtiennent des scores plus homogènes (moins de variance)
+<img src="genre.png" style="height:300px;margin-right:200px"/>
 
 **Interprétation** : Ces résultats reflètent des tendances classiques dans les performances académiques par genre, potentiellement liées à des facteurs socioculturels et des stéréotypes de genre dans les matières STEM vs littéraires.
 
@@ -148,12 +153,14 @@ Les histogrammes montrent que :
 1. Master's degree / Bachelor's degree → Scores les plus élevés
 2. Some college / Associate's degree → Scores moyens
 3. High school / Some high school → Scores plus faibles
+<img src="score pour noveau parents.png" style="height:300px;margin-right:200px"/>
 
 **Interprétation** : Le capital culturel et éducatif familial joue un rôle déterminant dans la réussite scolaire, confirmant l'importance du contexte socio-économique.
 
 #### Effet de la Préparation aux Examens
 
 **Impact positif mesurable** : Les étudiants ayant suivi un cours de préparation obtiennent des scores **systématiquement plus élevés** (+5 à 10 points en moyenne) dans toutes les matières.
+<img src="score preparation.png" style="height:300px;margin-right:200px"/>
 
 **Interprétation** : Les programmes de préparation sont efficaces et constituent un levier d'action concret pour améliorer les performances.
 
@@ -189,6 +196,7 @@ Prédire le **score en mathématiques** en fonction de 5 variables indépendante
 ### 5.3 Interprétation de la Régression Linéaire
 
 #### Qualité du Modèle
+<img src="regression lineaire.png" style="height:300px;margin-right:200px"/>
 
 **R² = 0.20-0.25** signifie que :
 - ✅ Les variables socio-démographiques ont un **impact réel** sur les performances
@@ -248,6 +256,7 @@ Classifier les étudiants en deux catégories :
 | **Précision (Pass)** | ~80-90% | Fiabilité des prédictions "Pass" |
 | **Rappel (Pass)** | ~85-95% | Détection des vrais "Pass" |
 | **F1-Score** | ~0.82-0.88 | Équilibre précision/rappel |
+<img src="regression logistique.png" style="height:300px;margin-right:200px"/>
 
 ### 6.3 Interprétation de la Régression Logistique
 
@@ -269,6 +278,7 @@ Réalité  Fail  [ 20     10 ]  → 30 échecs réels
 - **Faux Négatifs (8)** : Réussites prédites comme "Fail" (erreur type I)
 
 #### Courbe de Probabilité
+<img src="probabilites.png" style="height:300px;margin-right:200px"/>
 
 **Interprétation graphique** :
 
