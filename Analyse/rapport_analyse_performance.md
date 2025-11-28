@@ -426,5 +426,3 @@ Le code Python complet est disponible et structuré en 7 étapes documentées, u
 ---
 
 **Rapport généré le :** 28 Novembre 2024  
-**Auteur :** Équipe d'Analyse Data Science  
-**Contact :** [Votre contact]
