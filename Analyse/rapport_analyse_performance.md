@@ -429,10 +429,8 @@ Les résultats appellent à une approche **holistique et équitable** de l'éduc
 8. `regression_logistique_probabilites.png` - Analyse des probabilités
 9. `coefficients_regression_logistique.png` - Coefficients du modèle
 
-### Code Source
-
-Le code Python complet est disponible et structuré en 7 étapes documentées, utilisant les meilleures pratiques de data science et de visualisation.
 
 ---
 
 **Rapport généré le :** 28 Novembre 2024  
+# Par ASMA AL BARJ 
